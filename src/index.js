@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import reducer from './reducers';
+import {reducer as formReducer} from 'redux-form';
+import { Provider } from 'react-redux';
+import {combineReducers, createStore} from 'redux';
+
+
+const store = createStore(combineReducers({
+  contador: reducer,
+  form: formReducer
+}))
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
